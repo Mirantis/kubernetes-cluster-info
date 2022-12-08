@@ -1,6 +1,6 @@
 # mirantis/kubernetes-cluster-info
 
-docker image for cluster info a Swarm/UCP cluster to return the core counts and other sizing stats
+docker image to query information fron a Swarm/UCP cluster 
 based off of alpine:latest
 
 To pull this image:
