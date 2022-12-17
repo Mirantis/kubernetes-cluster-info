@@ -1,6 +1,6 @@
 # mirantis/kubernetes-cluster-info
 
-docker image to query information fron a Swarm/UCP cluster 
+docker image to query information from a MKE cluster 
 based off of alpine:latest
 
 To pull this image:
@@ -12,13 +12,13 @@ There are two methods to run this container:
 
 1. [__On the cluster__](#on-the-cluster) - Run it directly on a manager via a client bundle (requires image pull access from Docker Hub)
 
-1. [__On a local engine__](#on-a-local-engine) - Run it on a local machine (such as Docker Desktop) and communicate to the UCP APIs using a client bundle
+1. [__On a local engine__](#on-a-local-engine) - Run it on a local machine (such as Docker Desktop) and communicate to the MKE APIs using a client bundle
 
-If you are running in a secured environment or use Docker Content Trust policy enforcement, you'll want to choose the 2nd option.  The first option is the quickest due to all API calls going over the Docker socket of a manager instead of across the UCP APIs but the 2nd option will not run any containers in your environment.
+If you are running in a secured environment or use Docker Content Trust policy enforcement, you'll want to choose the 2nd option.  The first option is the quickest due to all API calls going over the Docker socket of a manager instead of across the MKE APIs but the 2nd option will not run any containers in your environment.
 
 ### On the cluster
 
-1. Load a UCP client bundle (or skip the client bundle and run the command directly on a manager)
+1. Load a MKE client bundle (or skip the client bundle and run the command directly on a manager)
 
 1. Run the container:
 
@@ -91,7 +91,7 @@ If you are running in a secured environment or use Docker Content Trust policy e
 
 ### On a local engine
 
-1. Find the URL to your UCP and the local path to your _extracted_ client bundle.
+1. Find the URL to your MKE and the local path to your _extracted_ client bundle.
 
 1. Run the container locally, updating the `UCP_URL` and the path to your extracted client bundle:
 
@@ -143,6 +143,6 @@ If you are running in a secured environment or use Docker Content Trust policy e
 
    In the above example, the cluster has 15 nodes, 4 nodes have 2 cores each, 11 nodes have 4 cores each.
 
-### From a UCP support dump
+### From a MKE support dump
 
-If you wish to retrieve some basic data from a UCP support dump, you can utilize the `support_dump_count_cores.sh` script to analyze the dump locally.  There is less detailed information in the support dump as the data structure is a bit different than the API calls but you can get general information about cluster size.
+If you wish to retrieve some basic data from a MKE support dump, you can utilize the `support_dump_count_cores.sh` script to analyze the dump locally.  There is less detailed information in the support dump as the data structure is a bit different than the API calls but you can get general information about cluster size.
