@@ -23,11 +23,23 @@ then
 else
   CURL_CMD="curl -s -m 5 --unix-socket /var/run/docker.sock http://v1.30"
 
+  # retrieve container runtime platform
+  PLATFORM_NAME="$(${CURL_CMD}/version | jq -r .Platform.Name)"
+
   # check to see if the docker socket is available
   if [ ! -S /var/run/docker.sock ]
   then
     echo "ERROR: Docker socket not found at /var/run/docker.sock"
     exit 1
+  fi
+
+  # check to see if runtime is MCR
+  if [[ "${PLATFORM_NAME}" != *"Mirantis Container Runtime"* ]]
+  then
+    echo "ERROR: nodes is not an MCR node. Platform = ${PLATFORM_NAME}"
+    exit 1 
+  else
+    echo "Node is an MCR node"
   fi
 fi
 

@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER Greg Huebner <ghuebner@mirantis.com>
+LABEL maintainer="Kevin Ng <kng@mirantis.com>"
 
 RUN apk add --no-cache bash curl jq
 
