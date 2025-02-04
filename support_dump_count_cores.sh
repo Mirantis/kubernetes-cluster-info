@@ -34,3 +34,34 @@ echo "Ttl Core - ${ttlCPU}"
 echo "Min Core - ${minCPU}"
 echo "Max Core - ${maxCPU}"
 echo "Avg Core - ${avgCPU}"
+
+# gather Mirantis Container Runtime (MCR) information
+echo "---- Mirantis Container Runtime (MCR) Information ----"
+
+# Check if Docker is installed
+if command -v docker &> /dev/null; then
+    echo "Docker Version:"
+    docker version
+    echo "Docker Info:"
+    docker info
+else
+    echo "Docker is not installed or not in the system's PATH."
+fi
+
+# Check if containerd is installed
+if command -v containerd &> /dev/null; then
+    echo "Containerd Version:"
+    containerd --version
+else
+    echo "Containerd is not installed or not in the system's PATH."
+fi
+
+# Check if ctr (containerd CLI) is installed
+if command -v ctr &> /dev/null; then
+    echo "Containerd CLI (ctr) Version:"
+    ctr version
+    echo "List of Running Containers:"
+    ctr containers list
+else
+    echo "Containerd CLI (ctr) is not installed or not in the system's PATH."
+fi
